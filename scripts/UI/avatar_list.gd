@@ -1,11 +1,11 @@
 extends ScrollContainer
 
 var avatar_data: Array[AvatarData]
+var stat_labels: Array[Button]
+var stat_names := ["HP","ATK","DEF","MAG","RES","MP","SPD","CRIT","MRG"]
 @onready var avatar_selection = get_tree().current_scene
 @onready var avatar_name_label := $"../AvatarInfo/AvatarName"
 @onready var avatar_image = $"../AvatarInfo/AvatarImage"
-@onready var avatar_left_stat_label = $"../AvatarInfo/AvatarStat/LeftStat"
-@onready var avatar_right_stat_label = $"../AvatarInfo/AvatarStat/RightStat"
 @onready var skill_list_container = $"../TagExpandationList/SkillContainer/SkillList"
 @onready var passive_list_container = $"../TagExpandationList/PassiveContainer/PassiveList"
 @onready var avatar_list_container = $AvatarList
@@ -13,7 +13,18 @@ var avatar_data: Array[AvatarData]
 func _ready() -> void:
 	avatar_data = AvatarRepo.avatar_data
 	avatar_selection.avatar_changed.connect(_on_player_selected)
+	load_stat_labels()
 	load_avatar_buttons()
+
+func load_stat_labels():
+	for i in range(5):
+		stat_labels.append(get_node("../AvatarInfo/AvatarStat/LeftStat/%sPoints" % stat_names[i]))
+		stat_labels.append(get_node("../AvatarInfo/AvatarStat/LeftStat/%sScale" % stat_names[i]))
+		stat_labels.append(get_node("../AvatarInfo/AvatarStat/LeftStat/%sStat" % stat_names[i]))
+	for i in range(4):
+		stat_labels.append(get_node("../AvatarInfo/AvatarStat/RightStat/%sPoints" % stat_names[i+5]))
+		stat_labels.append(get_node("../AvatarInfo/AvatarStat/RightStat/%sScale" % stat_names[i+5]))
+		stat_labels.append(get_node("../AvatarInfo/AvatarStat/RightStat/%sStat" % stat_names[i+5]))
 
 func _on_button_pressed(data: AvatarData) -> void:
 	avatar_selection.set_avatar(data.Name)
@@ -31,49 +42,11 @@ func _on_player_selected(avatar_id: String):
 func set_avatar_UI(data: AvatarData):
 	avatar_name_label.text = data.Name
 	avatar_image.texture = load("res://sprites/avatars/%s.png" % data.Name)
-	avatar_left_stat_label.text = """
-HP: %d x %d = %d \n
-ATK: %d x %d = %d \n
-DEF: %d x %d = %d \n
-MAG: %d x %d = %d \n
-RES: %d x %d = %d \n""" % [
-		data.HP.points,
-		data.HP.scale,
-		data.HP.points*data.HP.scale,
-		data.ATK.points,
-		data.ATK.scale,
-		data.ATK.points*data.HP.scale,
-		data.DEF.points,
-		data.DEF.scale,
-		data.DEF.points*data.HP.scale,
-		data.MAG.points,
-		data.MAG.scale,
-		data.MAG.points*data.HP.scale,
-		data.RES.points,
-		data.RES.scale,
-		data.RES.points*data.HP.scale,
-	]
-	
-	avatar_right_stat_label.text = """
-MP: %d x %d = %d \n
-SPD: %d x %d = %d \n
-CRIT: %d x %d = %d \n
-MRG: %d x %d = %d \n
-N.Attack: %s \n""" % [
-		data.MP.points,
-		data.MP.scale,
-		data.MP.points*data.HP.scale,
-		data.SPD.points,
-		data.SPD.scale,
-		data.SPD.points*data.HP.scale,
-		data.CRIT.points,
-		data.CRIT.scale,
-		data.CRIT.points*data.HP.scale,
-		data.MRG.points,
-		data.MRG.scale,
-		data.MRG.points*data.HP.scale,
-		data.Normal_Attack
-	]
+	for i in range(stat_names.size()):
+		var avatar_stat:Stat = data.get(stat_names[i])
+		stat_labels[i*3].text = str(avatar_stat.points)
+		stat_labels[i*3+1].text = str(avatar_stat.scale)
+		stat_labels[i*3+2].text = str(avatar_stat.points * avatar_stat.scale)
 
 func load_avatar_buttons():
 	for data in avatar_data:
@@ -111,5 +84,5 @@ func create_button_for_container(text:String, on_pressed: Callable, isDisable:bo
 func clear_avatar_UI():
 	avatar_name_label.text = ""
 	avatar_image.texture = null
-	avatar_left_stat_label.text = ""
-	avatar_right_stat_label.text = ""	
+	for label in stat_labels:
+		label.text = ""

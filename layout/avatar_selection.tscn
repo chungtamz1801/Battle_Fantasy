@@ -8,6 +8,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13qtx"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wypj"]
+bg_color = Color(0.06311088, 0.06570825, 0.061829843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k6e4"]
+bg_color = Color(0.0627451, 0.06666667, 0.0627451, 1)
+
 [node name="AvatarSelection" type="Control" unique_id=743186406]
 layout_mode = 3
 anchors_preset = 15
@@ -82,17 +88,338 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="LeftStat" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat" unique_id=742269728]
+[node name="LeftStat" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat" unique_id=1921505030]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+columns = 4
+
+[node name="Label4" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1897028170]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-bbcode_enabled = true
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+text = "HP"
 
-[node name="RightStat" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat" unique_id=1319657333]
+[node name="HPPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1014713184]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="HPScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=896478823]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="HPStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=513230783]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="Label7" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1757727026]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+text = "ATK"
+
+[node name="ATKPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1189603978]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="ATKScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=229188198]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="ATKStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=765944895]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="Label10" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=112538818]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+text = "DEF"
+
+[node name="DEFPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1118346161]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="DEFScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1989813671]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="DEFStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=63729389]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="Label13" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=709728248]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+text = "MAG"
+
+[node name="MAGPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1265311519]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="MAGScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=247617560]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="MAGStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=100687064]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="Label16" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1059724547]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+text = "RES"
+
+[node name="RESPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=2029725487]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="RESScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=479536240]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="RESStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/LeftStat" unique_id=1088347322]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4wypj")
+disabled = true
+
+[node name="RightStat" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat" unique_id=469931343]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+columns = 4
+
+[node name="Label4" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=824996925]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+text = "MP"
+
+[node name="MPPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=766884475]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="MPScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1683552129]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="MPStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1767134445]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="Label7" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1705748467]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+text = "SPD"
+
+[node name="SPDPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=386716828]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="SPDScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1656112947]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="SPDStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1778653878]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="Label10" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1974476746]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+text = "CRIT"
+
+[node name="CRITPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1233217169]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="CRITScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1141241245]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="CRITStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=661685151]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="Label13" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1812493376]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+text = "MRG"
+
+[node name="MRGPoints" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1622344731]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="MRGScale" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=544238090]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="MRGStat" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1271281463]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3k6e4")
+disabled = true
+
+[node name="Label16" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1607151252]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_alignment = 1
+
+[node name="Label19" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1767137616]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1704794325]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_alignment = 1
+
+[node name="Label20" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/AvatarInfo/AvatarStat/RightStat" unique_id=1133672398]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_alignment = 1
 
 [node name="TagExpandationList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1631907697]
 layout_mode = 2
