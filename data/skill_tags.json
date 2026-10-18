@@ -1,0 +1,18 @@
+[
+  {
+	"id":"long_sword",
+	"skills": [
+		"arc_cleave",
+		"hewing_strike",
+		"heartbreaker",
+        "rush_attack"
+	]
+  },
+  {
+	"id":"great_axe",
+	"skills": [
+		"chop",
+        "decimate"
+	]
+  }
+]

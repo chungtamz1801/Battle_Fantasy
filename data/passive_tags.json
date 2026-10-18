@@ -1,0 +1,14 @@
+[
+  {
+	"id":"long_sword",
+	"passives": [
+        "test1"
+	]
+  },
+  {
+	"id":"great_axe",
+	"passives": [
+        "test2"
+	]
+  }
+]
