@@ -41,7 +41,8 @@ func _on_player_selected(avatar_id: String):
 
 func set_avatar_UI(data: AvatarData):
 	avatar_name_label.text = data.Name
-	avatar_image.texture = load("res://sprites/avatars/%s.png" % data.Name)
+	var sprite_path := "spr_main_%s_idle" % data.Name.to_lower().replace(" ","_")
+	avatar_image.texture = load("res://sprites/avatars/%s/%s.png" % [sprite_path,sprite_path+"_0"])
 	for i in range(stat_names.size()):
 		var avatar_stat:Stat = data.get(stat_names[i])
 		stat_labels[i*3].text = str(avatar_stat.points)

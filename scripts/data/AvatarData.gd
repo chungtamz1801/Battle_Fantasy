@@ -1,6 +1,7 @@
 extends Resource
 
 class_name AvatarData
+var ID: String
 var Name: String
 var HP: Stat
 var ATK: Stat

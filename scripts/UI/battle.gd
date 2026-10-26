@@ -1,34 +1,34 @@
 extends Node2D
 
+var previous_time: int = 0
+@onready var main_team_node = $"BattleField/MainTeam"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SaveSystem.load_game()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	set_up_players()
 	
-func save_game():
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group("Player")
-	for node in save_nodes:
-		# Check the node is an instanced scene so it can be instanced again during load.
-		if node.scene_file_path.is_empty():
-			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
-			continue
 
-		# Check the node has a save function.
-		if !node.has_method("save"):
-			print("persistent node '%s' is missing a save() function, skipped" % node.name)
-			continue
+func _process(_delta: float) -> void:
+	var current_time := Time.get_ticks_msec()
 
-		# Call the node's save function.
-		var node_data = node.call("save")
+	if previous_time != 0:
+		var frame_time := current_time - previous_time
 
-		# JSON provides a static method to serialized JSON string.
-		var json_string = JSON.stringify(node_data)
+		if frame_time > 50:
+			print("Frame took: ", frame_time, " ms")
 
-		# Store the save dictionary as a new line in the save file.
-		save_file.store_line(json_string)
+	previous_time = current_time
+
+func set_up_players():
+	var index := 1 
+	for player in GameManager.main_team.players:
+		var player_node: Node2D = Node2D.new()
+		var sprite = Sprite2D.new()
+		var sprite_path := "spr_main_%s_idle" % player.player_avatar.to_lower().replace(" ","_")
+		sprite.texture = load("res://sprites/avatars/%s/%s.png" % [sprite_path,sprite_path+"_0"])
+		sprite.scale = Vector2(2,2)
+		player_node.add_child(sprite)
+		player_node.position = Vector2(500,index*300)
 		
+		main_team_node.add_child(player_node)
+		
+		index+=1

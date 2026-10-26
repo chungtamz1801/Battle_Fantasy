@@ -129,84 +129,83 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1847252204]
+[node name="SkillModifier" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1126682006]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1358269511]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SkillModifier" unique_id=1247484150]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=2060929449]
-layout_mode = 2
-text = "Skill"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=656903091]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="VScrollBar" type="VScrollBar" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1870008444]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=550647288]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="VScrollBar" type="VScrollBar" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=295637877]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=464664740]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=1448809926]
-layout_mode = 2
-text = "Passive"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=520583030]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="VScrollBar" type="VScrollBar" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=2147339617]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=534101344]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="VScrollBar" type="VScrollBar" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/VBoxContainer2" unique_id=670807306]
-layout_mode = 2
-
-[node name="GridContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=325491785]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
-
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/GridContainer" unique_id=873114874]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-text = "Item 1"
-
-[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/GridContainer" unique_id=958284447]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-text = "Item 2
+text = "Skill
 "
 
-[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/GridContainer" unique_id=870533125]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SkillModifier" unique_id=570203838]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SkillModifier/HBoxContainer" unique_id=1579604571]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-text = "Item 3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SkillModifier/HBoxContainer/ScrollContainer" unique_id=1663521828]
+layout_mode = 2
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SkillModifier/HBoxContainer" unique_id=1234511905]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SkillModifier/HBoxContainer/ScrollContainer2" unique_id=1047042038]
+layout_mode = 2
+
+[node name="PassiveModifier" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1931947952]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PassiveModifier" unique_id=1081430725]
+layout_mode = 2
+text = "Passive
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PassiveModifier" unique_id=677944742]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PassiveModifier/HBoxContainer" unique_id=1263046955]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PassiveModifier/HBoxContainer/ScrollContainer" unique_id=1352015]
+layout_mode = 2
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PassiveModifier/HBoxContainer" unique_id=1110626779]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PassiveModifier/HBoxContainer/ScrollContainer2" unique_id=39330581]
+layout_mode = 2
+
+[node name="ItemModifier" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=824731146]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemModifier" unique_id=330670356]
+layout_mode = 2
+text = "Item
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemModifier" unique_id=1436932616]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemModifier/HBoxContainer" unique_id=268924624]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemModifier/HBoxContainer" unique_id=15271943]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ItemModifier/HBoxContainer/ScrollContainer" unique_id=1781224636]
+layout_mode = 2
 
 [node name="MarginContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1254551598]
 layout_mode = 2

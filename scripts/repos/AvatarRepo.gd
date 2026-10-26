@@ -1,33 +1,25 @@
 extends Node
 
 var avatar_data: Array[AvatarData]
-var scale_data: Array
-var avatar_path := "res://data/avatars.json"
-var scale_path := "res://data/scales.json"
-var skill_tag_path := "res://data/skill_tags.json"
-var passive_tag_path := "res://data/passive_tags.json"
+var scale_data: Dictionary
 
-@onready var raw_skill_tag_data := read_data_from_file("res://data/skill_tags.json")
-@onready var raw_passive_tag_data := read_data_from_file("res://data/passive_tags.json")
+@onready var raw_skill_tag_data := read_data_from_file(Config.SKILL_TAG_PATH)
+@onready var raw_passive_tag_data := read_data_from_file(Config.PASSIVE_TAG_PATH)
 
 func _ready():
 	load_scale_data()
 	load_avatar_data()
 	
 func load_avatar_data():
-	for data in read_data_from_file(avatar_path):
+	for data in read_data_from_file(Config.AVATAR_PATH).values():
 		avatar_data.append(from_dict(data))
 
 func load_scale_data():
-	scale_data = read_data_from_file(scale_path)
+	scale_data = read_data_from_file(Config.SCALE_PATH)
 
 func from_dict(data: Dictionary) -> AvatarData:
 	var avatar := AvatarData.new()
-	var scale
-	for sdata in scale_data:
-		if sdata["id"] == data.get("Scale","default"):
-			scale = sdata
-			break
+	var scale = scale_data.get(data.get("Scale","default"))
 	
 	avatar.Name = data.get("Name", "")
 	avatar.HP = get_stat(data.get("HP",0),"HP",scale)
@@ -65,7 +57,7 @@ func get_passives_from_tags(tags: Array) -> Array:
 				break
 	return passive_list
 	
-func read_data_from_file(path: String) -> Array:
+func read_data_from_file(path: String) -> Dictionary:
 	var file := FileAccess.open(path, FileAccess.READ)
 	
 	if file == null:
@@ -76,8 +68,8 @@ func read_data_from_file(path: String) -> Array:
 	if data == null:
 		push_error("Invalid JSON: "+path)
 		
-	if not data is Array:
-		push_error("Data must be an array: "+path)
+	if not data is Dictionary:
+		push_error("Data must be an array: %d" % typeof(data))
 		
 	return data
 

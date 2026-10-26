@@ -1,0 +1,14 @@
+{
+ 	"long_sword": 
+	[
+		"arc_cleave",
+		"hewing_strike",
+		"heartbreaker",
+        "rush_attack"
+	],
+	"great_sword": 
+	[
+		"chop",
+        "decimate"
+	]
+}

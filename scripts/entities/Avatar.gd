@@ -1,9 +1,10 @@
 extends Resource
 
 class_name Avatar
+var ID: String
 var Name: String
 var HP: int
-var Current_hp: int
+var Current_HP: int
 var ATK: int
 var DEF: int
 var MAG: int

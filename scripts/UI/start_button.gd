@@ -10,4 +10,4 @@ func _on_pressed():
 			root.show_alert("Please choose 4 avatar")
 			return
 	GameManager.main_team = root.main_team
-	get_tree().change_scene_to_file("res://layout/team_management.tscn")
+	get_tree().change_scene_to_file("res://layout/battle.tscn")
