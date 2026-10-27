@@ -3,11 +3,16 @@
 [ext_resource type="Script" uid="uid://bd86qcxglj6x8" path="res://scripts/UI/battle.gd" id="1_x3mi5"]
 [ext_resource type="Script" uid="uid://da384l8wejhq4" path="res://scripts/UI/normal_command_button.gd" id="2_76mee"]
 [ext_resource type="Script" uid="uid://crpaj6f1qfy88" path="res://scripts/controllers/CameraController.gd" id="2_cpqm4"]
+[ext_resource type="Script" uid="uid://dgaydbpmihf52" path="res://scripts/state_machines/BattleStateMachine.gd" id="2_dya23"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3mi5"]
 
 [node name="Battle" type="Node2D" unique_id=15545188]
 script = ExtResource("1_x3mi5")
+
+[node name="BattleStateMachine" type="Node" parent="." unique_id=1592748696]
+script = ExtResource("2_dya23")
+metadata/_custom_type_script = "uid://dgaydbpmihf52"
 
 [node name="BattleField" type="Node2D" parent="." unique_id=136419861]
 
