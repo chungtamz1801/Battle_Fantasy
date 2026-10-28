@@ -1,6 +1,6 @@
 extends ScrollContainer
 
-var avatar_data: Array[AvatarData]
+var avatar_data: Dictionary[String,AvatarData]
 var stat_labels: Array[Button]
 var stat_names := ["HP","ATK","DEF","MAG","RES","MP","SPD","CRIT","MRG"]
 @onready var avatar_selection = get_tree().current_scene
@@ -11,7 +11,7 @@ var stat_names := ["HP","ATK","DEF","MAG","RES","MP","SPD","CRIT","MRG"]
 @onready var avatar_list_container = $AvatarList
 
 func _ready() -> void:
-	avatar_data = AvatarRepo.avatar_data
+	avatar_data = GameManager.avatar_repo.avatar_data
 	avatar_selection.avatar_changed.connect(_on_player_selected)
 	load_stat_labels()
 	load_avatar_buttons()
@@ -32,12 +32,11 @@ func _on_button_pressed(data: AvatarData) -> void:
 	load_passive_list(data.Passives)
 
 func _on_player_selected(avatar_id: String):
-	for data in avatar_data:
-		if data.Name == avatar_id:
-			set_avatar_UI(data)
-			break
-		else:
-			clear_avatar_UI()
+	var avatar_info = avatar_data.get(avatar_id)
+	if avatar_info == null:
+		clear_avatar_UI()
+	else:
+		set_avatar_UI(avatar_info)
 
 func set_avatar_UI(data: AvatarData):
 	avatar_name_label.text = data.Name
@@ -50,7 +49,7 @@ func set_avatar_UI(data: AvatarData):
 		stat_labels[i*3+2].text = str(avatar_stat.points * avatar_stat.scale)
 
 func load_avatar_buttons():
-	for data in avatar_data:
+	for data in avatar_data.values():
 		avatar_list_container.add_child(create_button_for_container(data.Name, _on_button_pressed.bind(data)))
 
 func load_skill_list(skills:Array[String]):

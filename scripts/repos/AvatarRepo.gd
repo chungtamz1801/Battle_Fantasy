@@ -1,21 +1,22 @@
-extends Node
+extends RefCounted
 
-var avatar_data: Array[AvatarData]
-var scale_data: Dictionary
+class_name AvatarRepo
 
-@onready var raw_skill_tag_data := read_data_from_file(Config.SKILL_TAG_PATH)
-@onready var raw_passive_tag_data := read_data_from_file(Config.PASSIVE_TAG_PATH)
+var avatar_data: Dictionary[String,AvatarData] = {}
+var scale_data: Dictionary 
+var raw_skill_tag_data: Dictionary
+var raw_passive_tag_data: Dictionary
 
-func _ready():
-	load_scale_data()
+func _init():
+	scale_data = FileUtil.read_data_from_file(Config.SCALE_PATH)
+	raw_skill_tag_data = FileUtil.read_data_from_file(Config.SKILL_TAG_PATH)
+	raw_passive_tag_data = FileUtil.read_data_from_file(Config.PASSIVE_TAG_PATH)
 	load_avatar_data()
-	
-func load_avatar_data():
-	for data in read_data_from_file(Config.AVATAR_PATH).values():
-		avatar_data.append(from_dict(data))
 
-func load_scale_data():
-	scale_data = read_data_from_file(Config.SCALE_PATH)
+func load_avatar_data():
+	var data := FileUtil.read_data_from_file(Config.AVATAR_PATH)
+	for id in data.keys():
+		avatar_data.set(id,from_dict(data[id]))
 
 func from_dict(data: Dictionary) -> AvatarData:
 	var avatar := AvatarData.new()
@@ -57,27 +58,21 @@ func get_passives_from_tags(tags: Array) -> Array:
 				break
 	return passive_list
 	
-func read_data_from_file(path: String) -> Dictionary:
-	var file := FileAccess.open(path, FileAccess.READ)
-	
-	if file == null:
-		push_error("Cannot open file: "+path)
-		
-	var data = JSON.parse_string(file.get_as_text())
-	
-	if data == null:
-		push_error("Invalid JSON: "+path)
-		
-	if not data is Dictionary:
-		push_error("Data must be an array: %d" % typeof(data))
-		
-	return data
+
 
 func get_stat(points: int, type:String, data:Dictionary) -> Stat:
 	var stat := Stat.new()
 	stat.points = points
 	stat.scale = data[type]
 	return stat
+
+func get_avatar(avatar_id: String) -> AvatarData:
+	return avatar_data[avatar_id]
+	
+func get_avatar_name_by_id(avatar_id: String) -> String:
+	if avatar_id.is_empty():
+		return "None"
+	return avatar_data[avatar_id].Name
 
 var skill_tags_by_id: Dictionary = {}
 

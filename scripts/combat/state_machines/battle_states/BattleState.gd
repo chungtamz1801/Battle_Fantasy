@@ -2,7 +2,7 @@ extends Node
 
 class_name BattleState
 var machine: BattleStateMachine
-var battle: Node
+var battle: BattleManager
 
 func enter(_data: Dictionary = {}) -> void:pass
 func exit() -> void:pass

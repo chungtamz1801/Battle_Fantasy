@@ -5,8 +5,8 @@ func _ready():
 	
 func _on_pressed():
 	var root = get_tree().current_scene
-	for player in root.main_team.players:
-		if(player.player_avatar.is_empty()):
+	for player:Player in root.main_team.players:
+		if(player.avatar == null):
 			root.show_alert("Please choose 4 avatar")
 			return
 	GameManager.main_team = root.main_team

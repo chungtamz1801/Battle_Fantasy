@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_avatar_changed(avatar_id: String):
 	var index: int = root.current_player_id
 	var player_button = get_node("PlayerButton%d" % index)
-	player_button.text = "Player %s\nAvatar: %s" % [(index + 1),avatar_id]
+	player_button.text = "Player %s\nAvatar: %s" % [(index + 1),GameManager.avatar_repo.get_avatar_name_by_id(avatar_id)]
 	
 func load_player_selection_button():
 	for index in range(GameManager.team_size):

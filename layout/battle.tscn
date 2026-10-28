@@ -1,29 +1,25 @@
 [gd_scene format=3 uid="uid://cvyqxs76gwpat"]
 
 [ext_resource type="Script" uid="uid://bd86qcxglj6x8" path="res://scripts/UI/battle.gd" id="1_x3mi5"]
+[ext_resource type="Script" uid="uid://bx143vqgip0cv" path="res://scripts/combat/manager/BattleManager.gd" id="2_1xq61"]
 [ext_resource type="Script" uid="uid://da384l8wejhq4" path="res://scripts/UI/normal_command_button.gd" id="2_76mee"]
-[ext_resource type="Script" uid="uid://crpaj6f1qfy88" path="res://scripts/controllers/CameraController.gd" id="2_cpqm4"]
-[ext_resource type="Script" uid="uid://dgaydbpmihf52" path="res://scripts/state_machines/BattleStateMachine.gd" id="2_dya23"]
+[ext_resource type="Script" uid="uid://crpaj6f1qfy88" path="res://scripts/combat/camera/CameraController.gd" id="2_cpqm4"]
+[ext_resource type="Script" uid="uid://dgaydbpmihf52" path="res://scripts/combat/state_machines/BattleStateMachine.gd" id="2_dya23"]
+[ext_resource type="Script" uid="uid://c6ko18kwy5mtm" path="res://scripts/combat/manager/TurnQueue.gd" id="3_1baib"]
+[ext_resource type="Script" uid="uid://p3noinlrncts" path="res://scripts/combat/state_machines/battle_states/Setup.gd" id="5_g13xl"]
+[ext_resource type="Script" uid="uid://dg1cfy8x2ids7" path="res://scripts/combat/state_machines/battle_states/AITurn.gd" id="5_koceq"]
+[ext_resource type="Script" uid="uid://cpay34o27qk3d" path="res://scripts/combat/state_machines/battle_states/BattleEnd.gd" id="7_jigi1"]
+[ext_resource type="Script" uid="uid://c5w8pl1yy1bqu" path="res://scripts/combat/state_machines/battle_states/PlayerTurn.gd" id="8_7omlb"]
+[ext_resource type="Script" uid="uid://p7vxkju6l31c" path="res://scripts/combat/state_machines/battle_states/ResolveAction.gd" id="9_8iwne"]
+[ext_resource type="Script" uid="uid://cmlkjfnl816e8" path="res://scripts/combat/state_machines/battle_states/TurnEnd.gd" id="10_i70fb"]
+[ext_resource type="Script" uid="uid://cfuqypb4gpi22" path="res://scripts/combat/state_machines/battle_states/TurnStart.gd" id="11_7cv14"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3mi5"]
 
 [node name="Battle" type="Node2D" unique_id=15545188]
 script = ExtResource("1_x3mi5")
 
-[node name="BattleStateMachine" type="Node" parent="." unique_id=1592748696]
-script = ExtResource("2_dya23")
-metadata/_custom_type_script = "uid://dgaydbpmihf52"
-
-[node name="BattleField" type="Node2D" parent="." unique_id=136419861]
-
-[node name="ColorRect" type="ColorRect" parent="BattleField" unique_id=2120697544]
-offset_right = 3000.0
-offset_bottom = 2000.0
-color = Color(0, 0.5411765, 0, 1)
-
-[node name="MainTeam" type="Node2D" parent="BattleField" unique_id=555297040]
-
-[node name="Camera2D" type="Camera2D" parent="BattleField" unique_id=124367929]
+[node name="MainCamera" type="Camera2D" parent="." unique_id=124367929]
 position = Vector2(960, 480)
 limit_left = 0
 limit_top = 0
@@ -31,9 +27,19 @@ limit_right = 3000
 limit_bottom = 2000
 script = ExtResource("2_cpqm4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=254548186]
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1554424938]
 
-[node name="BattleUI" type="Control" parent="CanvasLayer" unique_id=1976763384]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2120697544]
+offset_right = 3000.0
+offset_bottom = 2000.0
+color = Color(0, 0.5411765, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Units" type="Node2D" parent="." unique_id=8620525]
+
+[node name="BattleUI" type="CanvasLayer" parent="." unique_id=254548186]
+
+[node name="BattleUI" type="Control" parent="BattleUI" unique_id=1976763384]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TurnIndicator" type="Panel" parent="CanvasLayer/BattleUI" unique_id=1758326523]
+[node name="TurnIndicator" type="Panel" parent="BattleUI/BattleUI" unique_id=1758326523]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -50,7 +56,7 @@ offset_left = -640.0
 offset_bottom = 108.0
 grow_horizontal = 0
 
-[node name="CommandPanel" type="PanelContainer" parent="CanvasLayer/BattleUI" unique_id=976571894]
+[node name="CommandPanel" type="PanelContainer" parent="BattleUI/BattleUI" unique_id=976571894]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -60,18 +66,18 @@ offset_top = -171.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BattleUI/CommandPanel" unique_id=712174327]
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleUI/BattleUI/CommandPanel" unique_id=712174327]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="PlayerInfo" type="Panel" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer" unique_id=1721419544]
+[node name="PlayerInfo" type="Panel" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=1721419544]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/PlayerInfo" unique_id=735775406]
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/PlayerInfo" unique_id=735775406]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,16 +85,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer" unique_id=1349474074]
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer" unique_id=1349474074]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer/HBoxContainer" unique_id=1157723195]
+[node name="Name" type="Label" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer/HBoxContainer" unique_id=1157723195]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 text = "Makoto"
 
-[node name="AP" type="Label" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer/HBoxContainer" unique_id=222405954]
+[node name="AP" type="Label" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer/HBoxContainer" unique_id=222405954]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
@@ -96,52 +102,140 @@ text = "AP: 3/3"
 label_settings = SubResource("LabelSettings_x3mi5")
 horizontal_alignment = 1
 
-[node name="Health" type="Label" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer" unique_id=213986223]
+[node name="Health" type="Label" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer" unique_id=213986223]
 layout_mode = 2
 text = "HP: 100/100"
 
-[node name="MP" type="Label" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer" unique_id=2065721143]
+[node name="MP" type="Label" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/PlayerInfo/VBoxContainer" unique_id=2065721143]
 layout_mode = 2
 text = "MP: 100/100"
 
-[node name="CommandGroup" type="VBoxContainer" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer" unique_id=1479790766]
+[node name="CommandGroup" type="VBoxContainer" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=1479790766]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.15
 
-[node name="Normal" type="Button" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=360030389]
+[node name="Normal" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=360030389]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Normal"
 script = ExtResource("2_76mee")
 
-[node name="Skill" type="Button" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=24896566]
+[node name="Skill" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=24896566]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Skill"
 
-[node name="Monster" type="Button" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=1287051072]
+[node name="Monster" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=1287051072]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Monster"
 
-[node name="Item" type="Button" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=102392796]
+[node name="Item" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=102392796]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Item"
 
-[node name="End Turn" type="Button" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=700452397]
+[node name="End Turn" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=700452397]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "End Turn"
 
-[node name="CommandList" type="HFlowContainer" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer" unique_id=2115181011]
+[node name="CommandList" type="HFlowContainer" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=2115181011]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.45
 
-[node name="MapOverview" type="Panel" parent="CanvasLayer/BattleUI/CommandPanel/HBoxContainer" unique_id=710768406]
+[node name="MapOverview" type="Panel" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=710768406]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
+
+[node name="BattleManager" type="Node" parent="." unique_id=700097937 node_paths=PackedStringArray("units_root", "spawn_points", "ui")]
+script = ExtResource("2_1xq61")
+units_root = NodePath("../Units")
+spawn_points = NodePath("../SpawnPoints")
+ui = NodePath("../BattleUI")
+metadata/_custom_type_script = "uid://bx143vqgip0cv"
+
+[node name="TurnQueue" type="Node" parent="BattleManager" unique_id=592958728]
+script = ExtResource("3_1baib")
+metadata/_custom_type_script = "uid://c6ko18kwy5mtm"
+
+[node name="BattleStateMachine" type="Node" parent="BattleManager" unique_id=1440478127 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_dya23")
+initial_state = NodePath("Setup")
+metadata/_custom_type_script = "uid://dgaydbpmihf52"
+
+[node name="AITurn" type="Node" parent="BattleManager/BattleStateMachine" unique_id=1255175295]
+script = ExtResource("5_koceq")
+metadata/_custom_type_script = "uid://dg1cfy8x2ids7"
+
+[node name="Setup" type="Node" parent="BattleManager/BattleStateMachine" unique_id=451901317]
+script = ExtResource("5_g13xl")
+metadata/_custom_type_script = "uid://p3noinlrncts"
+
+[node name="BattleEnd" type="Node" parent="BattleManager/BattleStateMachine" unique_id=373501279]
+script = ExtResource("7_jigi1")
+metadata/_custom_type_script = "uid://cpay34o27qk3d"
+
+[node name="PlayerTurn" type="Node" parent="BattleManager/BattleStateMachine" unique_id=1888360378]
+script = ExtResource("8_7omlb")
+metadata/_custom_type_script = "uid://c5w8pl1yy1bqu"
+
+[node name="ResolveAction" type="Node" parent="BattleManager/BattleStateMachine" unique_id=478268608]
+script = ExtResource("9_8iwne")
+metadata/_custom_type_script = "uid://p7vxkju6l31c"
+
+[node name="TurnEnd" type="Node" parent="BattleManager/BattleStateMachine" unique_id=309998480]
+script = ExtResource("10_i70fb")
+metadata/_custom_type_script = "uid://cmlkjfnl816e8"
+
+[node name="TurnStart" type="Node" parent="BattleManager/BattleStateMachine" unique_id=1032133174]
+script = ExtResource("11_7cv14")
+metadata/_custom_type_script = "uid://cfuqypb4gpi22"
+
+[node name="BattleManager" type="Node" parent="BattleManager" unique_id=1853159731 node_paths=PackedStringArray("units_root", "spawn_points", "ui")]
+script = ExtResource("2_1xq61")
+units_root = NodePath("../../Units")
+spawn_points = NodePath("../../SpawnPoints")
+ui = NodePath("../../BattleUI")
+metadata/_custom_type_script = "uid://bx143vqgip0cv"
+
+[node name="TurnQueue" type="Node" parent="BattleManager/BattleManager" unique_id=504190215]
+script = ExtResource("3_1baib")
+metadata/_custom_type_script = "uid://c6ko18kwy5mtm"
+
+[node name="BattleStateMachine" type="Node" parent="BattleManager/BattleManager" unique_id=76663100 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_dya23")
+initial_state = NodePath("Setup")
+metadata/_custom_type_script = "uid://dgaydbpmihf52"
+
+[node name="AITurn" type="Node" parent="BattleManager/BattleManager/BattleStateMachine" unique_id=1702243806]
+script = ExtResource("5_koceq")
+metadata/_custom_type_script = "uid://dg1cfy8x2ids7"
+
+[node name="Setup" type="Node" parent="BattleManager/BattleManager/BattleStateMachine" unique_id=2024005534]
+script = ExtResource("5_g13xl")
+metadata/_custom_type_script = "uid://p3noinlrncts"
+
+[node name="BattleEnd" type="Node" parent="BattleManager/BattleManager/BattleStateMachine" unique_id=2085254115]
+script = ExtResource("7_jigi1")
+metadata/_custom_type_script = "uid://cpay34o27qk3d"
+
+[node name="PlayerTurn" type="Node" parent="BattleManager/BattleManager/BattleStateMachine" unique_id=110694989]
+script = ExtResource("8_7omlb")
+metadata/_custom_type_script = "uid://c5w8pl1yy1bqu"
+
+[node name="ResolveAction" type="Node" parent="BattleManager/BattleManager/BattleStateMachine" unique_id=840771084]
+script = ExtResource("9_8iwne")
+metadata/_custom_type_script = "uid://p7vxkju6l31c"
+
+[node name="TurnEnd" type="Node" parent="BattleManager/BattleManager/BattleStateMachine" unique_id=154491891]
+script = ExtResource("10_i70fb")
+metadata/_custom_type_script = "uid://cmlkjfnl816e8"
+
+[node name="TurnStart" type="Node" parent="BattleManager/BattleManager/BattleStateMachine" unique_id=1787295430]
+script = ExtResource("11_7cv14")
+metadata/_custom_type_script = "uid://cfuqypb4gpi22"

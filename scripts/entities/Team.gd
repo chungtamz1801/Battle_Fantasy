@@ -1,7 +1,7 @@
-extends Resource
+extends Node
 
 class_name Team
-var name: String
+var team_name: String
 var players: Array[Player]
 
 func _init() -> void:

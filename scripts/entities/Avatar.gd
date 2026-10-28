@@ -1,7 +1,6 @@
 extends Resource
 
 class_name Avatar
-var ID: String
 var Name: String
 var HP: int
 var Current_HP: int
@@ -15,3 +14,4 @@ var MRG: int
 var CRIT: int
 var Normal_Attack: String
 var Skills: String
+var Max_Actions: int = 3

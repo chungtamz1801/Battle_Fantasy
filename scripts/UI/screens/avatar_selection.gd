@@ -4,6 +4,7 @@ var main_team := Team.new()
 var current_player_id:int = 0
 var count: int = 0
 var alert: AcceptDialog
+var avatar_ids: Array[String] = ["", "", "", "", ""]
 
 signal avatar_changed(avatar_id: String)
 
@@ -13,18 +14,16 @@ func _ready() -> void:
 	alert = AcceptDialog.new()
 	alert.title = "Alert"
 	add_child(alert)
-	
-#func _process(delta: float):
-	#print(current_player_id)
-	#print(main_team.players[current_player_id].player_avatar)
 
 func set_player(player_id:int):
 	current_player_id = player_id
-	avatar_changed.emit(main_team.players[current_player_id].player_avatar)
+	avatar_changed.emit(avatar_ids[player_id])
 	
 func set_avatar(avatar_id: String):
-	main_team.players[current_player_id].player_avatar = avatar_id
-	avatar_changed.emit(main_team.players[current_player_id].player_avatar)
+	avatar_id = IDUtil.convert_string_into_id(avatar_id)
+	avatar_ids[current_player_id] = avatar_id
+	main_team.players[current_player_id].avatar = AvatarFactory.create_avatar(avatar_id)
+	avatar_changed.emit(avatar_id)
 	
 func show_alert(message: String):
 	alert.dialog_text = message
