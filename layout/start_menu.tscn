@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr4np7vf505sb"]
 
-[ext_resource type="Script" uid="uid://dclb4xd0ub0xr" path="res://scripts/UI/start_game_button.gd" id="1_iccp1"]
+[ext_resource type="Script" uid="uid://dclb4xd0ub0xr" path="res://scripts/start_menu/UI/start_game_button.gd" id="1_iccp1"]
 
 [node name="StartMenu" type="Control" unique_id=1010596121]
 layout_mode = 3

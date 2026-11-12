@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnis2ynf0m1gr"]
 
-[ext_resource type="Script" uid="uid://c712hx0tcg15e" path="res://scripts/UI/team_management_screen.gd" id="1_2l2id"]
-[ext_resource type="Script" uid="uid://c7ga5om4grpak" path="res://scripts/UI/player_selection_button.gd" id="1_77dok"]
+[ext_resource type="Script" uid="uid://c712hx0tcg15e" path="res://scripts/UI_Temp/team_management_screen.gd" id="1_2l2id"]
+[ext_resource type="Script" uid="uid://c7ga5om4grpak" path="res://scripts/avatar_selection/UI/player_selection_button.gd" id="1_77dok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6nlm"]
 bg_color = Color(0, 0, 0, 1)

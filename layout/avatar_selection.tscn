@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://jndgk7a8v1sa"]
 
-[ext_resource type="Script" uid="uid://cvh8nhn1gou6o" path="res://scripts/UI/screens/avatar_selection.gd" id="1_6jpec"]
-[ext_resource type="Script" uid="uid://cig3q0vm4140i" path="res://scripts/UI/avatar_list.gd" id="1_e1wbe"]
-[ext_resource type="Script" uid="uid://drvaeyo2x7mmm" path="res://scripts/UI/player_buttons.gd" id="2_3k6e4"]
-[ext_resource type="Script" uid="uid://bmgdoelmgql1s" path="res://scripts/UI/start_button.gd" id="4_4wypj"]
+[ext_resource type="Script" uid="uid://cvh8nhn1gou6o" path="res://scripts/avatar_selection/UI/avatar_selection.gd" id="1_6jpec"]
+[ext_resource type="Script" uid="uid://cig3q0vm4140i" path="res://scripts/avatar_selection/UI/avatar_list.gd" id="1_e1wbe"]
+[ext_resource type="Script" uid="uid://drvaeyo2x7mmm" path="res://scripts/avatar_selection/UI/player_buttons.gd" id="2_3k6e4"]
+[ext_resource type="Script" uid="uid://bmgdoelmgql1s" path="res://scripts/avatar_selection/UI/start_button.gd" id="4_4wypj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13qtx"]
 bg_color = Color(0, 0, 0, 1)
