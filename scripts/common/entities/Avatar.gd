@@ -13,5 +13,7 @@ var MP: int
 var MRG: int
 var CRIT: int
 var Normal_Attack: String
-var Skills: String
+var Skills: Array[StringName]
+var Passives: Array[StringName]
 var Max_Actions: int = 3
+var sprite: Sprite2D

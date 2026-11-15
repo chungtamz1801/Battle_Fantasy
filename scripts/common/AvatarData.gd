@@ -13,5 +13,5 @@ var MP: Stat
 var MRG: Stat
 var CRIT: Stat
 var Normal_Attack: String
-var Skills: Array
-var Passives: Array
+var Skills: Array[StringName]
+var Passives: Array[StringName]

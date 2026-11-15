@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cvyqxs76gwpat"]
 
-[ext_resource type="Script" uid="uid://bd86qcxglj6x8" path="res://scripts/battle/UI/battle.gd" id="1_x3mi5"]
+[ext_resource type="Script" uid="uid://bd86qcxglj6x8" path="res://scripts/battle/UI/BattleScreen.gd" id="1_x3mi5"]
 [ext_resource type="Script" uid="uid://da384l8wejhq4" path="res://scripts/battle/UI/normal_command_button.gd" id="2_76mee"]
 [ext_resource type="Script" uid="uid://crpaj6f1qfy88" path="res://scripts/battle/controller/CameraController.gd" id="2_cpqm4"]
+[ext_resource type="Script" uid="uid://b6wtsx81fvt35" path="res://scripts/battle/controller/BattleController.gd" id="3_dya23"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3mi5"]
 
@@ -17,15 +18,16 @@ limit_right = 3000
 limit_bottom = 2000
 script = ExtResource("2_cpqm4")
 
-[node name="SpawnPoints" type="Node2D" parent="." unique_id=1554424938]
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2120697544]
 offset_right = 3000.0
 offset_bottom = 2000.0
 color = Color(0, 0.5411765, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Units" type="Node2D" parent="." unique_id=8620525]
+[node name="Teams" type="Node" parent="." unique_id=187642597]
+
+[node name="BattleController" type="Node" parent="." unique_id=600008931]
+script = ExtResource("3_dya23")
 
 [node name="BattleUI" type="CanvasLayer" parent="." unique_id=254548186]
 

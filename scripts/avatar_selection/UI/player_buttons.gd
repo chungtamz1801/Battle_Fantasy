@@ -15,7 +15,7 @@ func load_player_selection_button():
 	for index in range(GameManager.team_size):
 		var player_button = Button.new()
 		player_button.text = "Player %s\nAvatar: None" % (index + 1)
-		player_button.set_script(load("res://scripts/UI/player_selection_button.gd"))
+		player_button.set_script(load(Config.PLAYER_SELECTION_BUTTON_SCRIPT_PATH))
 		player_button.name = "PlayerButton%d" % index
 		player_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		player_button.size_flags_stretch_ratio = 0.2

@@ -47,19 +47,21 @@ func set_avatar_UI(data: AvatarData):
 		stat_labels[i*3].text = str(avatar_stat.points)
 		stat_labels[i*3+1].text = str(avatar_stat.scale)
 		stat_labels[i*3+2].text = str(avatar_stat.points * avatar_stat.scale)
+	load_skill_list(data.Skills)
+	load_passive_list(data.Passives)
 
 func load_avatar_buttons():
 	for data in avatar_data.values():
 		avatar_list_container.add_child(create_button_for_container(data.Name, _on_button_pressed.bind(data)))
 
-func load_skill_list(skills:Array[String]):
+func load_skill_list(skills:Array[StringName]):
 	for child in skill_list_container.get_children():
 		child.queue_free()
 		
 	for skill in skills:
 		skill_list_container.add_child(create_button_for_container(skill,Callable(),true))
 
-func load_passive_list(passives:Array[String]):
+func load_passive_list(passives:Array[StringName]):
 	for child in passive_list_container.get_children():
 		child.queue_free()
 		
@@ -86,3 +88,8 @@ func clear_avatar_UI():
 	avatar_image.texture = null
 	for label in stat_labels:
 		label.text = ""
+	for child in skill_list_container.get_children():
+		child.queue_free()
+	for child in passive_list_container.get_children():
+		child.queue_free()
+	

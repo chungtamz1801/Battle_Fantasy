@@ -18,6 +18,16 @@ static func create_avatar(avatar_id: String) -> Avatar:
 	avatar.MRG = avatar_data.MRG.get_result_stat()
 	avatar.CRIT = avatar_data.CRIT.get_result_stat()
 	avatar.Normal_Attack = avatar_data.Normal_Attack
-	#avatar.Skills = avatar_data.Skills
+	avatar.Skills = avatar_data.Skills
+	avatar.Passives = avatar_data.Skills
+	
+	avatar.sprite = load_sprite_by_id(avatar_id)
 	
 	return avatar
+	
+static func load_sprite_by_id(avatar_id: String) -> Sprite2D:
+	var sprite = Sprite2D.new()
+	var sprite_path := "spr_main_%s_idle" % avatar_id
+	sprite.texture = load("res://sprites/avatars/%s/%s.png" % [sprite_path,sprite_path+"_0"])
+	sprite.scale = Vector2(2,2)
+	return sprite

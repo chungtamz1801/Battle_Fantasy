@@ -16,12 +16,13 @@ func _init():
 func load_avatar_data():
 	var data := FileUtil.read_data_from_file(Config.AVATAR_PATH)
 	for id in data.keys():
-		avatar_data.set(id,from_dict(data[id]))
+		avatar_data.set(id,from_dict(id,data[id]))
 
-func from_dict(data: Dictionary) -> AvatarData:
+func from_dict(id: String,data: Dictionary) -> AvatarData:
 	var avatar := AvatarData.new()
 	var scale = scale_data.get(data.get("Scale","default"))
 	
+	avatar.ID = id
 	avatar.Name = data.get("Name", "")
 	avatar.HP = get_stat(data.get("HP",0),"HP",scale)
 	avatar.ATK = get_stat(data.get("ATK",0),"ATK",scale)
@@ -35,31 +36,12 @@ func from_dict(data: Dictionary) -> AvatarData:
 
 	avatar.Normal_Attack = data.get("Normal Attack", "")
 
-	avatar.Skills = get_skills_from_tags(data.get("Tag",[]))
-	avatar.Passives = get_passives_from_tags(data.get("Tag",[]))
+	avatar.Skills = get_skills(data)
+	avatar.Passives = get_passives(data)
 
-	return avatar	
-	
-func get_skills_from_tags(tags: Array) -> Array:
-	var skill_list: Array[String]
-	for tag in tags:
-		for temp_tag in raw_skill_tag_data:
-			if temp_tag["id"] == tag:
-				skill_list.append_array(temp_tag["skills"])
-				break
-	return skill_list
-	
-func get_passives_from_tags(tags: Array) -> Array:
-	var passive_list: Array[String]
-	for tag in tags:
-		for temp_tag in raw_passive_tag_data:
-			if temp_tag["id"] == tag:
-				passive_list.append_array(temp_tag["passives"])
-				break
-	return passive_list
-	
+	return avatar
 
-
+#inner_function
 func get_stat(points: int, type:String, data:Dictionary) -> Stat:
 	var stat := Stat.new()
 	stat.points = points
@@ -73,22 +55,19 @@ func get_avatar_name_by_id(avatar_id: String) -> String:
 	if avatar_id.is_empty():
 		return "None"
 	return avatar_data[avatar_id].Name
+	
+func get_skills(data: Dictionary) -> Array[StringName]:
+	var result: Array[StringName] = []
 
-var skill_tags_by_id: Dictionary = {}
+	for skill_id in data.get("Skills", []):
+		result.append(StringName(skill_id))
 
-#Dictionary
-#func build_skill_tag_index() -> void:
-	#skill_tags_by_id.clear()
-#
-	#for item in raw_skill_tag_data:
-		#skill_tags_by_id[item["id"]] = item["skills"]
-#
-#
-#func get_skills_from_tags(tags: Array) -> Array[String]:
-	#var skill_list: Array[String] = []
-#
-	#for tag in tags:
-		#if skill_tags_by_id.has(tag):
-			#skill_list.append_array(skill_tags_by_id[tag])
-#
-	#return skill_list
+	return result
+
+func get_passives(data: Dictionary) -> Array[StringName]:
+	var result: Array[StringName] = []
+
+	for passive_id in data.get("Passives", []):
+		result.append(StringName(passive_id))
+
+	return result
