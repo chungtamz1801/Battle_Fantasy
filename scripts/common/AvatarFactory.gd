@@ -19,9 +19,12 @@ static func create_avatar(avatar_id: String) -> Avatar:
 	avatar.CRIT = avatar_data.CRIT.get_result_stat()
 	avatar.Normal_Attack = avatar_data.Normal_Attack
 	avatar.Skills = avatar_data.Skills
-	avatar.Passives = avatar_data.Skills
+	avatar.Passives = avatar_data.Passives
 	
-	avatar.sprite = load_sprite_by_id(avatar_id)
+	avatar.Max_AP = 3
+	avatar.Move_Budget = avatar.SPD * 10
+	avatar.Sprite = load_sprite_by_id(avatar_id)
+	
 	
 	return avatar
 	

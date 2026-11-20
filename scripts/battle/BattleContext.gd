@@ -5,7 +5,6 @@ class_name BattleContext
 var teams: Array[Team]
 var command_factory: CommandFactory
 var turn_controller: TurnController
-var action_fsm: ActionStateMachine
 #Them sau
 #var action_stack: ActionStack
 

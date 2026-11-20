@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MagicAttackData" format=3 uid="uid://dmdvimrijbcs2"]
 
 [ext_resource type="Script" uid="uid://dddnvaf1y4qjh" path="res://scripts/battle/data_models/actions/attacks/MagicAttackData.gd" id="1_a5dwq"]
-[ext_resource type="Script" uid="uid://dxbsea5o1pmxf" path="res://scripts/battle/data_models/TargetingRule.gd" id="2_bbyay"]
+[ext_resource type="Script" uid="uid://dxbsea5o1pmxf" path="res://scripts/battle/abstracts/TargetingRule.gd" id="2_bbyay"]
 [ext_resource type="Script" uid="uid://di26ax4midabr" path="res://scripts/battle/data_models/TargetingData.gd" id="3_kw15r"]
 
 [sub_resource type="Resource" id="Resource_s8thp"]

@@ -2,10 +2,19 @@ extends RefCounted
 
 class_name BattleCommand
 
-var request: ActionRequest
+enum CommandType{
+	MOVE_COMMAND,
+	ATTACK_COMMAND,
+	SKILL_COMMAND,
+	COMMON_COMMAND
+}
 
-func _init(p_request: ActionRequest) -> void:
+var request: ActionRequest
+var command_type: CommandType
+
+func _init(p_request: ActionRequest, p_command_type: CommandType) -> void:
 	request = p_request
+	command_type = p_command_type
 
 func execute(context: BattleContext) -> void:
 	if not can_execute():
@@ -21,8 +30,10 @@ func can_execute() -> bool:
 	# Kiểm tra actor còn sống, đủ điều kiện thực hiện...
 	return true
 
-
 func consume_resources() -> bool:
+	if(command_type == CommandType.MOVE_COMMAND):
+		var move_cost := request.actor.avatar.Position.distance_to(request.target)
+		request.actor.avatar.Move_Budget -= move_cost
 	return true
 
 

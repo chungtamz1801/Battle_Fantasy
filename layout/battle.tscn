@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cvyqxs76gwpat"]
 
 [ext_resource type="Script" uid="uid://bd86qcxglj6x8" path="res://scripts/battle/UI/BattleScreen.gd" id="1_x3mi5"]
-[ext_resource type="Script" uid="uid://da384l8wejhq4" path="res://scripts/battle/UI/normal_command_button.gd" id="2_76mee"]
+[ext_resource type="Script" uid="uid://da384l8wejhq4" path="res://scripts/battle/UI/ActionCommandButton.gd" id="2_76mee"]
 [ext_resource type="Script" uid="uid://crpaj6f1qfy88" path="res://scripts/battle/controller/CameraController.gd" id="2_cpqm4"]
 [ext_resource type="Script" uid="uid://b6wtsx81fvt35" path="res://scripts/battle/controller/BattleController.gd" id="3_dya23"]
+[ext_resource type="Script" uid="uid://i4ajif2uc5qu" path="res://scripts/battle/UI/TargetingPreview.gd" id="4_1baib"]
+[ext_resource type="Script" uid="uid://c6c44nattltxn" path="res://scripts/battle/UI/CommandList.gd" id="5_1xq61"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3mi5"]
 
@@ -28,6 +30,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BattleController" type="Node" parent="." unique_id=600008931]
 script = ExtResource("3_dya23")
+
+[node name="TargetingPreview" type="Node2D" parent="." unique_id=807363242]
+unique_name_in_owner = true
+script = ExtResource("4_1baib")
 
 [node name="BattleUI" type="CanvasLayer" parent="." unique_id=254548186]
 
@@ -102,41 +108,45 @@ text = "HP: 100/100"
 layout_mode = 2
 text = "MP: 100/100"
 
-[node name="CommandGroup" type="VBoxContainer" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=1479790766]
+[node name="CommandPanel" type="VBoxContainer" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=1479790766]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.15
 
-[node name="Normal" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=360030389]
+[node name="Action" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandPanel" unique_id=360030389]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
-text = "Normal"
+text = "Action"
 script = ExtResource("2_76mee")
 
-[node name="Skill" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=24896566]
+[node name="Skill" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandPanel" unique_id=24896566]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Skill"
 
-[node name="Monster" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=1287051072]
+[node name="Monster" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandPanel" unique_id=1287051072]
+visible = false
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Monster"
 
-[node name="Item" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=102392796]
+[node name="Item" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandPanel" unique_id=102392796]
+visible = false
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Item"
 
-[node name="End Turn" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandGroup" unique_id=700452397]
+[node name="End Turn" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandPanel" unique_id=700452397]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "End Turn"
 
 [node name="CommandList" type="HFlowContainer" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=2115181011]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.45
+script = ExtResource("5_1xq61")
 
 [node name="MapOverview" type="Panel" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer" unique_id=710768406]
 custom_minimum_size = Vector2(10, 0)

@@ -15,5 +15,9 @@ var CRIT: int
 var Normal_Attack: String
 var Skills: Array[StringName]
 var Passives: Array[StringName]
-var Max_Actions: int = 3
-var sprite: Sprite2D
+
+var Max_AP: int
+var AP_Left: int
+var Move_Budget: int
+var Position: Vector2
+var Sprite: Sprite2D
