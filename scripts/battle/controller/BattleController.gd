@@ -30,13 +30,10 @@ func initialize_battle() -> void:
 	targeting_preview = %TargetingPreview
 	command_list.action_selected.connect(_on_action_selected)
 	
-	turn_controller = TurnController.new()
+	turn_controller = TurnController.new(GameManager.main_team.players)
 	
-	context = BattleContext.new(
-		[GameManager.main_team],
-		turn_controller,
-		command_factory
-	)
+	context = BattleContext.new(turn_controller,command_factory)
+	context.add_players(GameManager.main_team.players)
 	
 	command_factory = CommandFactory.new()
 	area_pattern_factory = AreaPatternFactory.new(self)
