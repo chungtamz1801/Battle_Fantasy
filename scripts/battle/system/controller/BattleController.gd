@@ -2,14 +2,6 @@ extends Node
 
 class_name BattleController
 
-enum TurnStateMachine{
-	TURN_START,
-	TURN_START_PROCESSING,
-	PLAYER_TURN,
-	TURN_END,
-	TURN_END_PROCESSING
-}
-
 var battle_fsm: BattleStateMachine
 var turn_controller: TurnController
 var command_factory: CommandFactory
@@ -17,6 +9,7 @@ var context: BattleContext
 var area_pattern_factory: AreaPatternFactory
 var action_fsm: ActionStateMachine
 var targeting_preview: TargetingPreview
+
 
 func _ready() -> void:
 	initialize_battle()

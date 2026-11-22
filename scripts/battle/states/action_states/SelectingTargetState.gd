@@ -13,10 +13,11 @@ func _init(p_action_data: ActionData,r_area_pattern_factory: AreaPatternFactory,
 	targeting_preview = r_targeting_preview
 
 func enter(context: BattleContext):
-	targeting_preview.show_preview(area_pattern_factory.create_area_pattern(action_data.id),context.turn_controller.get_current_actor().avatar.Position)
+	targeting_preview.show_preview(area_pattern_factory.create_area_pattern(action_data.id))
+	print(area_pattern_factory.current_player.global_position)
 	
 func exit(context: BattleContext):
 	targeting_preview.hide_preview()
 	
 func update(context: BattleContext, delta):
-	targeting_preview.update_position(targeting_preview.get_global_mouse_position())
+	pass

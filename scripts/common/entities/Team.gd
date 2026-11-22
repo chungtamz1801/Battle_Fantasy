@@ -1,9 +1,14 @@
-extends Node
+extends RefCounted
 
 class_name Team
-var team_name: String
+
+enum TeamType{
+	MAIN,
+	ENEMY
+}
+
+var team_type: TeamType
 var players: Array[Player]
 
-func _init() -> void:
-	for i in range(GameManager.team_size):
-		players.append(Player.new())
+func _init(p_team_type: TeamType):
+	team_type = p_team_type

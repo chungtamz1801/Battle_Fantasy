@@ -22,15 +22,7 @@ static func create_avatar(avatar_id: String) -> Avatar:
 	avatar.Passives = avatar_data.Passives
 	
 	avatar.Max_AP = 3
-	avatar.Move_Budget = avatar.SPD * 10
-	avatar.Sprite = load_sprite_by_id(avatar_id)
-	
+	avatar.Move_Budget = avatar.SPD * 10	
 	
 	return avatar
 	
-static func load_sprite_by_id(avatar_id: String) -> Sprite2D:
-	var sprite = Sprite2D.new()
-	var sprite_path := "spr_main_%s_idle" % avatar_id
-	sprite.texture = load("res://sprites/avatars/%s/%s.png" % [sprite_path,sprite_path+"_0"])
-	sprite.scale = Vector2(2,2)
-	return sprite

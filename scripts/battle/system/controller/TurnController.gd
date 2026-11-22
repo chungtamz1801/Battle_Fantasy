@@ -3,15 +3,18 @@ class_name TurnController
 
 signal round_ended()
 signal player_changed(previous_player: Player, current_player: Player)
+signal turn_order_updated(new_turn_order: Array[Player])
 
 var turn_order: TurnOrder = TurnOrder.new()
 var current_turn_index: int = 0
+var turn_fsm: TurnStateMachine
+var is_require_updating_turn_order: bool = true
 
 func _init(players: Array[Player]) -> void:
 	for player in players:
 		turn_order.add_player(player)
 
-	turn_order.sort_by_speed()
+	turn_fsm = TurnStateMachine.new(self)
 
 func get_current_actor() -> Player:
 	return turn_order.get_player(current_turn_index)

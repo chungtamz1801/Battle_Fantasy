@@ -32,7 +32,7 @@ func can_execute() -> bool:
 
 func consume_resources() -> bool:
 	if(command_type == CommandType.MOVE_COMMAND):
-		var move_cost := request.actor.avatar.Position.distance_to(request.target)
+		var move_cost := request.actor.global_position.distance_to(request.target)
 		request.actor.avatar.Move_Budget -= move_cost
 	return true
 

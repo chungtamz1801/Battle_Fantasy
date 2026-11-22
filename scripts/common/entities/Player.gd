@@ -5,10 +5,19 @@ var player_name: String
 var avatar: Avatar
 var team: Team
 
-func _ready() -> void:
+func _init(p_player_name: String,avatar_id: String):
+	player_name = p_player_name
+	avatar = AvatarFactory.create_avatar(avatar_id)
 	avatar.Current_HP = avatar.HP
 	avatar.AP_Left = avatar.Max_AP
+	self.add_child(load_sprite_by_id(avatar_id))
 
+static func load_sprite_by_id(avatar_id: String) -> Sprite2D:
+	var sprite = Sprite2D.new()
+	var sprite_path := "spr_main_%s_idle" % avatar_id
+	sprite.texture = load("res://sprites/avatars/%s/%s.png" % [sprite_path,sprite_path+"_0"])
+	sprite.scale = Vector2(2,2)
+	return sprite
 ## --- hiệu ứng ---
 #var stunned_turns: int = 0
 #var poison_turns: int = 0

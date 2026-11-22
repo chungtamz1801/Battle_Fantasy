@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bd86qcxglj6x8" path="res://scripts/battle/UI/BattleScreen.gd" id="1_x3mi5"]
 [ext_resource type="Script" uid="uid://da384l8wejhq4" path="res://scripts/battle/UI/ActionCommandButton.gd" id="2_76mee"]
-[ext_resource type="Script" uid="uid://crpaj6f1qfy88" path="res://scripts/battle/controller/CameraController.gd" id="2_cpqm4"]
-[ext_resource type="Script" uid="uid://b6wtsx81fvt35" path="res://scripts/battle/controller/BattleController.gd" id="3_dya23"]
+[ext_resource type="Script" uid="uid://crpaj6f1qfy88" path="res://scripts/battle/system/controller/CameraController.gd" id="2_cpqm4"]
+[ext_resource type="Script" uid="uid://b6wtsx81fvt35" path="res://scripts/battle/system/controller/BattleController.gd" id="3_dya23"]
 [ext_resource type="Script" uid="uid://i4ajif2uc5qu" path="res://scripts/battle/UI/TargetingPreview.gd" id="4_1baib"]
 [ext_resource type="Script" uid="uid://c6c44nattltxn" path="res://scripts/battle/UI/CommandList.gd" id="5_1xq61"]
+[ext_resource type="Script" uid="uid://b170owd3d5v7u" path="res://scripts/battle/UI/TurnIndicatorPanel.gd" id="7_g13xl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3mi5"]
 
@@ -29,6 +30,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Teams" type="Node" parent="." unique_id=187642597]
 
 [node name="BattleController" type="Node" parent="." unique_id=600008931]
+unique_name_in_owner = true
 script = ExtResource("3_dya23")
 
 [node name="TargetingPreview" type="Node2D" parent="." unique_id=807363242]
@@ -44,15 +46,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TurnIndicator" type="Panel" parent="BattleUI/BattleUI" unique_id=1758326523]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -640.0
-offset_bottom = 108.0
-grow_horizontal = 0
 
 [node name="CommandPanel" type="PanelContainer" parent="BattleUI/BattleUI" unique_id=976571894]
 layout_mode = 1
@@ -153,3 +146,27 @@ custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
+
+[node name="TurnIndicatorPanel" type="Panel" parent="BattleUI/BattleUI" unique_id=1285570805]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -674.0
+offset_bottom = 95.0
+grow_horizontal = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BattleUI/BattleUI/TurnIndicatorPanel" unique_id=232027552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleUI/BattleUI/TurnIndicatorPanel/ScrollContainer" unique_id=364309963]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("7_g13xl")
