@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ActionData" format=3 uid="uid://cpqi5ny2k1f87"]
+
+[ext_resource type="Script" uid="uid://or201avcedxp" path="res://scripts/battle/data_models/action_area/DirectionArea.gd" id="1_r6245"]
+[ext_resource type="Script" uid="uid://dwc5wr7a7dx6m" path="res://scripts/battle/abstracts/ActionData.gd" id="2_7r2px"]
+
+[sub_resource type="Resource" id="Resource_agmb8"]
+script = ExtResource("1_r6245")
+metadata/_custom_type_script = "uid://or201avcedxp"
+
+[resource]
+script = ExtResource("2_7r2px")
+id = &"range_attack"
+display_name = "Attack"
+ap_cost = 1
+action_area = SubResource("Resource_agmb8")
+metadata/_custom_type_script = "uid://dwc5wr7a7dx6m"

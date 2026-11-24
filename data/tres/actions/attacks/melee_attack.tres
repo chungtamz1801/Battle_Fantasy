@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ActionData" format=3 uid="uid://ceg20hqbqtuu7"]
+
+[ext_resource type="Script" uid="uid://r6wibrjvlow2" path="res://scripts/battle/data_models/action_area/CircleArea.gd" id="1_kyxq5"]
+[ext_resource type="Script" uid="uid://dwc5wr7a7dx6m" path="res://scripts/battle/abstracts/ActionData.gd" id="2_n8ifj"]
+
+[sub_resource type="Resource" id="Resource_shgao"]
+script = ExtResource("1_kyxq5")
+metadata/_custom_type_script = "uid://r6wibrjvlow2"
+
+[resource]
+script = ExtResource("2_n8ifj")
+id = &"melee_attack"
+display_name = "Attack"
+ap_cost = 1
+action_area = SubResource("Resource_shgao")
+metadata/_custom_type_script = "uid://dwc5wr7a7dx6m"

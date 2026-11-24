@@ -4,6 +4,7 @@ class_name ActionStateMachine
 
 var context: BattleContext
 var current_state: ActionState
+var targeting_strategy_factory: TargetingStrategyFactory
 
 #var state_registry: Dictionary = {
 	#ActionState.ActionStateID.SELECTING_ACTION: SelectingActionState,
@@ -27,6 +28,4 @@ func update(delta):
 	if current_state == null:
 		return
 	current_state.update(context, delta)
-	
-
  

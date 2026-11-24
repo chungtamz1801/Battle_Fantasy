@@ -10,11 +10,13 @@ func _init(p_player_name: String,avatar_id: String):
 	avatar = AvatarFactory.create_avatar(avatar_id)
 	avatar.Current_HP = avatar.HP
 	avatar.AP_Left = avatar.Max_AP
-	self.add_child(load_sprite_by_id(avatar_id))
+	self.add_child(load_sprite_by_id(p_player_name,avatar_id))
 
-static func load_sprite_by_id(avatar_id: String) -> Sprite2D:
+static func load_sprite_by_id(player_name:String,avatar_id: String) -> Sprite2D:
 	var sprite = Sprite2D.new()
 	var sprite_path := "spr_main_%s_idle" % avatar_id
+	if(player_name.contains("Enemy")):
+		sprite_path = "spr_enemy_%s_idle" % avatar_id
 	sprite.texture = load("res://sprites/avatars/%s/%s.png" % [sprite_path,sprite_path+"_0"])
 	sprite.scale = Vector2(2,2)
 	return sprite

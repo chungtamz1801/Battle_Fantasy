@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://cbtj1yxhqojax"]
+
+[ext_resource type="Script" uid="uid://bcq6pq5s8k2x1" path="res://scripts/battle/abstracts/SkillData.gd" id="1_kblg7"]
+[ext_resource type="Script" uid="uid://r6wibrjvlow2" path="res://scripts/battle/data_models/action_area/CircleArea.gd" id="1_trwyv"]
+
+[sub_resource type="Resource" id="Resource_6ptqv"]
+script = ExtResource("1_trwyv")
+metadata/_custom_type_script = "uid://r6wibrjvlow2"
+
+[resource]
+script = ExtResource("1_kblg7")
+mp_cost = 5
+count_down = 4
+id = &"savagery"
+display_name = "Savagery"
+ap_cost = 1
+action_area = SubResource("Resource_6ptqv")
+action_type = 1
+metadata/_custom_type_script = "uid://bcq6pq5s8k2x1"

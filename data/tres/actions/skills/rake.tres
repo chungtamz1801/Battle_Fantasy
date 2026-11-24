@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://bqrn88bgv7fhy"]
+
+[ext_resource type="Script" uid="uid://bcq6pq5s8k2x1" path="res://scripts/battle/abstracts/SkillData.gd" id="1_erye5"]
+[ext_resource type="Script" uid="uid://or201avcedxp" path="res://scripts/battle/data_models/action_area/DirectionArea.gd" id="1_qn05l"]
+
+[sub_resource type="Resource" id="Resource_f0ekb"]
+script = ExtResource("1_qn05l")
+metadata/_custom_type_script = "uid://or201avcedxp"
+
+[resource]
+script = ExtResource("1_erye5")
+mp_cost = 3
+count_down = 1
+id = &"rake"
+display_name = "Rake"
+ap_cost = 1
+action_area = SubResource("Resource_f0ekb")
+action_type = 1
+metadata/_custom_type_script = "uid://bcq6pq5s8k2x1"

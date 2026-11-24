@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://bf6bhje3ffwmt"]
+
+[ext_resource type="Script" uid="uid://bcq6pq5s8k2x1" path="res://scripts/battle/abstracts/SkillData.gd" id="1_3j36b"]
+[ext_resource type="Script" uid="uid://r6wibrjvlow2" path="res://scripts/battle/data_models/action_area/CircleArea.gd" id="1_oouq4"]
+
+[sub_resource type="Resource" id="Resource_87del"]
+script = ExtResource("1_oouq4")
+metadata/_custom_type_script = "uid://r6wibrjvlow2"
+
+[resource]
+script = ExtResource("1_3j36b")
+mp_cost = 10
+count_down = 5
+id = &"realm_warp"
+display_name = "Realm Warp"
+ap_cost = 2
+action_area = SubResource("Resource_87del")
+action_type = 1
+metadata/_custom_type_script = "uid://bcq6pq5s8k2x1"

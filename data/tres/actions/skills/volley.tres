@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://bulph5dd024lq"]
+
+[ext_resource type="Script" uid="uid://bcq6pq5s8k2x1" path="res://scripts/battle/abstracts/SkillData.gd" id="1_2hwjd"]
+[ext_resource type="Script" uid="uid://or201avcedxp" path="res://scripts/battle/data_models/action_area/DirectionArea.gd" id="1_7i4o6"]
+
+[sub_resource type="Resource" id="Resource_7rhts"]
+script = ExtResource("1_7i4o6")
+metadata/_custom_type_script = "uid://or201avcedxp"
+
+[resource]
+script = ExtResource("1_2hwjd")
+mp_cost = 4
+count_down = 2
+id = &"volley"
+display_name = "Volley"
+ap_cost = 1
+action_area = SubResource("Resource_7rhts")
+action_type = 1
+metadata/_custom_type_script = "uid://bcq6pq5s8k2x1"

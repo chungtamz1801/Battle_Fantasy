@@ -7,8 +7,8 @@ func _init():
 	setup_commands()
 	
 func setup_commands():
-	register_command(&"melee_attack",MeleeAttackCommand)
-	register_command(&"move",MoveCommand)
+	register_command(&"melee_attack",MeleeAttack)
+	register_command(&"move",Move)
 	
 func register_command(id:String, command:Script):
 	command_registry.set(id,func(request:ActionRequest): return command.new(request))

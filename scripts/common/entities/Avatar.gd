@@ -1,4 +1,4 @@
-extends Resource
+extends RefCounted
 
 class_name Avatar
 var Name: String
@@ -12,8 +12,8 @@ var SPD: int
 var MP: int
 var MRG: int
 var CRIT: int
-var Normal_Attack: String
-var Skills: Array[StringName]
+var Actions: Array[ActionData]
+var Skills: Array[SkillData]
 var Passives: Array[StringName]
 
 var Max_AP: int

@@ -2,12 +2,9 @@ extends Button
 
 func _pressed() -> void:
 	var command_list := $"../../CommandList"
-	
-	for child in command_list.get_children():
-		child.queue_free()
-	
-	var move_data = load("res://data/tres/actions/commons/MoveData.tres")
-	command_list.add_command(move_data as MoveData)
+	var battle_controller: BattleController = %BattleController 
+	var action_data := battle_controller.context.get_current_actor().avatar.Actions
+	command_list.add_commands(action_data)
 	
 	#new_button = Button.new()
 	#new_button.text = "Rank Up"

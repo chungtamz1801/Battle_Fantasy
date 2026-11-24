@@ -2,6 +2,8 @@ extends RefCounted
 
 class_name BattleContext
 
+signal new_players_added(players:Array[Player])
+
 var players: Array[Player] = []
 #var teams: Array[Team]
 var command_factory: CommandFactory
@@ -16,3 +18,7 @@ func get_all_player() -> Array[Player]:
 	
 func add_players(r_players: Array[Player]):
 	players.append_array(r_players)
+	new_players_added.emit(r_players)
+
+func get_current_actor() -> Player:
+	return turn_controller.turn_order.get_player(turn_controller.current_turn_index)

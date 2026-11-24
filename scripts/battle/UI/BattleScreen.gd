@@ -6,7 +6,7 @@ var previous_time: int = 0
 @onready var teams_node: Node = $"Teams"
 
 func _ready() -> void:
-	set_up_main_team()
+	set_up_teams()
 
 func _process(_delta: float) -> void:
 	var current_time := Time.get_ticks_msec()
@@ -19,12 +19,16 @@ func _process(_delta: float) -> void:
 
 	previous_time = current_time
 
-func set_up_main_team():
+func set_up_teams():
 	var team_node: Node = Node.new()
 	var index := 1 
 	for player in GameManager.main_team.players:
 		player.position = Vector2(500,index*300)
 		team_node.add_child(player)
 		index+=1
-		
 	teams_node.add_child(team_node)
+	for team in GameManager.other_teams:
+		team_node = Node.new()
+		for player in team.players:
+			team_node.add_child(player)
+		teams_node.add_child(team_node)

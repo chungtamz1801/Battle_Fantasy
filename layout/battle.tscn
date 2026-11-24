@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b6wtsx81fvt35" path="res://scripts/battle/system/controller/BattleController.gd" id="3_dya23"]
 [ext_resource type="Script" uid="uid://i4ajif2uc5qu" path="res://scripts/battle/UI/TargetingPreview.gd" id="4_1baib"]
 [ext_resource type="Script" uid="uid://c6c44nattltxn" path="res://scripts/battle/UI/CommandList.gd" id="5_1xq61"]
+[ext_resource type="Script" uid="uid://qinn0jrm1uq4" path="res://scripts/battle/UI/SkillCommandButton.gd" id="6_hpis0"]
 [ext_resource type="Script" uid="uid://b170owd3d5v7u" path="res://scripts/battle/UI/TurnIndicatorPanel.gd" id="7_g13xl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3mi5"]
@@ -116,6 +117,7 @@ script = ExtResource("2_76mee")
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Skill"
+script = ExtResource("6_hpis0")
 
 [node name="Monster" type="Button" parent="BattleUI/BattleUI/CommandPanel/HBoxContainer/CommandPanel" unique_id=1287051072]
 visible = false

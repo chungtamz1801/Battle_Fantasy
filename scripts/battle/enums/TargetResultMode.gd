@@ -1,0 +1,10 @@
+class_name TargetResultMode
+
+enum{
+	POSITION,
+	ONLY_ALLY,
+	ONLY_ENEMY,
+	MULTI_ALLY,
+	MULTI_ENEMY,
+	MULTIPOSITION
+}

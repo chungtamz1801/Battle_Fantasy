@@ -26,5 +26,16 @@ func _on_pressed_test():
 		else:
 			GameManager.main_team.players.append(Player.new(Config.PLAYER_NAME[i],avatar_id))
 		i+=1
-		
+	set_up_enemy_team_test()
 	get_tree().change_scene_to_file("res://layout/battle.tscn")
+	
+#test
+func set_up_enemy_team_test():
+	var team = Team.new(Team.TeamType.ENEMY)
+	var index := 1 
+	for i in range(0,5):
+		var player = Player.new("Enemy %d" % i,"warrior")
+		player.position = Vector2(1500,index*300)
+		team.add_player(player)
+		index+=1
+	GameManager.other_teams.append(team)

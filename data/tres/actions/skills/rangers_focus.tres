@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://c3dt6ps80i0vo"]
+
+[ext_resource type="Script" uid="uid://bcq6pq5s8k2x1" path="res://scripts/battle/abstracts/SkillData.gd" id="1_65dd3"]
+[ext_resource type="Script" uid="uid://or201avcedxp" path="res://scripts/battle/data_models/action_area/DirectionArea.gd" id="1_f0ekb"]
+
+[sub_resource type="Resource" id="Resource_65dd3"]
+script = ExtResource("1_f0ekb")
+metadata/_custom_type_script = "uid://or201avcedxp"
+
+[resource]
+script = ExtResource("1_65dd3")
+mp_cost = 10
+count_down = 4
+id = &"rangers_focus"
+display_name = "Ranger's Focus"
+ap_cost = 2
+action_area = SubResource("Resource_65dd3")
+action_type = 1
+metadata/_custom_type_script = "uid://bcq6pq5s8k2x1"

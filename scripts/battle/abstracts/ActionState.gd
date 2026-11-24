@@ -22,3 +22,6 @@ func exit(context: BattleContext):
 	
 func update(context: BattleContext, delta):
 	pass
+	
+func handle_input(event: InputEvent, context: BattleContext):
+	pass

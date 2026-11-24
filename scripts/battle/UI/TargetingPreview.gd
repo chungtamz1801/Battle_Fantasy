@@ -2,21 +2,22 @@ extends Node2D
 
 class_name TargetingPreview
 
-var area_pattern: AreaPattern
+var targeting_strategy: TargetingStrategy
 
-func show_preview(pattern: AreaPattern) -> void:
-	area_pattern = pattern
-	global_position = pattern.postion
+func show_preview(r_targeting_strategy: TargetingStrategy) -> void:
+	targeting_strategy = r_targeting_strategy
 	visible = true
 	queue_redraw()
-
-func update_position(position: Vector2) -> void:
-	if area_pattern.is_updated_position:
-		global_position = position
+	
+func update_preview():
+	targeting_strategy.update(get_local_mouse_position())
+	
+	#if targeting_strategy.is_redraw_required():
+		#queue_redraw()
 
 func hide_preview() -> void:
 	visible = false
-	area_pattern = null
+	targeting_strategy = null
 
 #func set_transform_data(
 	#position: Vector2,
@@ -25,8 +26,10 @@ func hide_preview() -> void:
 	#global_position = position
 	#rotation = direction.angle()
 
+
+
 func _draw() -> void:
-	if area_pattern == null:
+	if targeting_strategy == null:
 		return
 
-	area_pattern.draw_preview(self)
+	targeting_strategy.draw_area(self)

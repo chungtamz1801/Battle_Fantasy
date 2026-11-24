@@ -28,7 +28,7 @@
 		"CRIT": 0,
 		"Normal Attack": "melee_attack",
 		"Scale": "default",
-		"Skills": ["decisive_strike","judgment"],
+		"Skills": ["decisive_strike","defend"],
 		"Passives":""
 	},
 	"archer": {

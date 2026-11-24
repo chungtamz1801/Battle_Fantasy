@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ActionData" format=3 uid="uid://bnne6sotdagbu"]
+
+[ext_resource type="Script" uid="uid://dwc5wr7a7dx6m" path="res://scripts/battle/abstracts/ActionData.gd" id="1_8lr8d"]
+[ext_resource type="Script" uid="uid://r6wibrjvlow2" path="res://scripts/battle/data_models/action_area/CircleArea.gd" id="1_ucuaa"]
+
+[sub_resource type="Resource" id="Resource_ucuaa"]
+script = ExtResource("1_ucuaa")
+metadata/_custom_type_script = "uid://r6wibrjvlow2"
+
+[resource]
+script = ExtResource("1_8lr8d")
+id = &"move"
+display_name = "Move"
+action_area = SubResource("Resource_ucuaa")
+action_type = 2
+metadata/_custom_type_script = "uid://dwc5wr7a7dx6m"

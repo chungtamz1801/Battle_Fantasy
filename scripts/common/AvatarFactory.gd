@@ -17,12 +17,28 @@ static func create_avatar(avatar_id: String) -> Avatar:
 	avatar.MP = avatar_data.MP.get_result_stat()
 	avatar.MRG = avatar_data.MRG.get_result_stat()
 	avatar.CRIT = avatar_data.CRIT.get_result_stat()
-	avatar.Normal_Attack = avatar_data.Normal_Attack
-	avatar.Skills = avatar_data.Skills
+	avatar.Actions = create_action_data(avatar_data.Normal_Attack) 
+	avatar.Skills = create_skill_data(avatar_data.Skills) 
 	avatar.Passives = avatar_data.Passives
 	
 	avatar.Max_AP = 3
 	avatar.Move_Budget = avatar.SPD * 10	
 	
 	return avatar
+	
+static func create_action_data(id: StringName) -> Array[ActionData]:
+	var result: Array[ActionData] = []
+	var action_data = load("res://data/tres/actions/attacks/%s.tres" % id)
+	result.append(action_data as ActionData)
+	action_data = load("res://data/tres/actions/commons/move.tres")
+	result.append(action_data as ActionData)
+	return result
+	
+static func create_skill_data(ids: Array[StringName]) -> Array[SkillData]:
+	var result: Array[SkillData] = []
+	for id in ids:
+		var skill_data = load("res://data/tres/actions/skills/%s.tres" % id)
+		result.append(skill_data as SkillData)
+	return result
+
 	

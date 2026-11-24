@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://dsrslktvitdru"]
+
+[ext_resource type="Script" uid="uid://bcq6pq5s8k2x1" path="res://scripts/battle/abstracts/SkillData.gd" id="1_6kxky"]
+[ext_resource type="Script" uid="uid://r6wibrjvlow2" path="res://scripts/battle/data_models/action_area/CircleArea.gd" id="1_87del"]
+
+[sub_resource type="Resource" id="Resource_g3w1f"]
+script = ExtResource("1_87del")
+metadata/_custom_type_script = "uid://r6wibrjvlow2"
+
+[resource]
+script = ExtResource("1_6kxky")
+mp_cost = 3
+count_down = 1
+id = &"astral_infusion"
+display_name = "Astral Infusion"
+ap_cost = 1
+action_area = SubResource("Resource_g3w1f")
+action_type = 1
+metadata/_custom_type_script = "uid://bcq6pq5s8k2x1"
